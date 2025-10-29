@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,6 +14,7 @@
         android:layout_height="200dp"
         android:layout_marginTop="16dip"
         android:text="Hello World!"
+        android:textColor="#ADE25C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
@@ -27,6 +29,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/exercise"
+        android:textColor="#ADE25C"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logDisplayTextView" />
@@ -37,11 +40,13 @@
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:padding="8dp"
-        android:inputType="textAutoComplete"
         android:hint="@string/enter_an_exercise"
+        android:inputType="textAutoComplete"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBaseline_toBaselineOf="@+id/exerciseLabelTextView"
         app:layout_constraintStart_toEndOf="@id/exerciseLabelTextView" />
-    
+
     <TextView
         android:id="@+id/weightLabelTextView"
         android:layout_width="100dp"
@@ -49,6 +54,7 @@
         android:layout_marginStart="16dip"
         android:layout_marginTop="8dp"
         android:text="@string/weight"
+        android:textColor="#ADE25C"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exerciseLabelTextView" />
@@ -58,9 +64,11 @@
         android:layout_width="227dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
+        android:padding="8dp"
         android:hint="@string/enter_a_weight"
         android:inputType="number|numberDecimal"
-        android:padding="8dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBaseline_toBaselineOf="@+id/weightLabelTextView"
         app:layout_constraintStart_toEndOf="@id/weightLabelTextView" />
 
@@ -72,6 +80,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/reps"
         android:textSize="24sp"
+        android:textColor="#ADE25C"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weightLabelTextView" />
 
@@ -80,21 +89,26 @@
         android:layout_width="227dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
+        android:padding="8dp"
         android:hint="@string/enter_reps"
         android:inputType="number|numberDecimal"
-        android:padding="8dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBaseline_toBaselineOf="@+id/repsLabelTextView"
         app:layout_constraintStart_toEndOf="@id/repsLabelTextView" />
-    
+
     <Button
+        android:id="@+id/logButton"
         android:layout_width="390dp"
         android:layout_height="205dp"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#ADE25C"
         android:text="Log!"
+        android:textColor="#050404"
         android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/repsInputEditText"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/repsInputEditText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
