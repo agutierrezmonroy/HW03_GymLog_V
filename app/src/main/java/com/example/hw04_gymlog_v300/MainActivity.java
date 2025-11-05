@@ -1,6 +1,7 @@
 package com.example.hw04_gymlog_v300;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -14,7 +15,11 @@ import com.example.hw04_gymlog_v300.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "DAC_GYMLOG";
     ActivityMainBinding binding;
+    String exercise = "";
+    double weight = 0.0;
+    int reps = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +30,29 @@ public class MainActivity extends AppCompatActivity {
         binding.logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Grean", Toast.LENGTH_SHORT).show();
+                getInformationFromDisplay();
             }
         });
+
+    }
+
+
+    private void getInformationFromDisplay(){
+        exercise = binding.exerciseInputEditText.getText().toString();
+
+        try {
+            weight = Double.parseDouble(binding.weightInputEditText.getText().toString());
+        } catch (NumberFormatException e) {
+            Log.d(TAG, "Error reading value from Weight edit text.");
+        }
+
+        try {
+            reps = Integer.parseInt(binding.repsInputEditText.getText().toString());
+        } catch (NumberFormatException e) {
+            Log.d(TAG, "Error reading value from Reps edit text.");
+        }
+
+
 
     }
 }
