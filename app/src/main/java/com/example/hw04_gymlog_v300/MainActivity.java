@@ -1,6 +1,7 @@
 package com.example.hw04_gymlog_v300;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -12,6 +13,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.hw04_gymlog_v300.databinding.ActivityMainBinding;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,13 +30,24 @@ public class MainActivity extends AppCompatActivity {
         binding = binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.logDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
+
         binding.logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getInformationFromDisplay();
+                updateDisplay();
             }
         });
 
+    }
+
+    private void updateDisplay(){
+        String currentInfo = binding.logDisplayTextView.getText().toString();
+        String newDisplay = String.format(Locale.US, "Exercise: %s%nWeight: %.2f%nReps: %d%n=-=-=-=%n", exercise, weight, reps);
+        newDisplay+= currentInfo;
+
+        binding.logDisplayTextView.setText(newDisplay);
     }
 
 
