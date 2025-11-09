@@ -7,6 +7,8 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hw04_gymlog_v300.Database.GymLogRepository;
+import com.example.hw04_gymlog_v300.Database.entities.GymLog;
 import com.example.hw04_gymlog_v300.databinding.ActivityMainBinding;
 
 import java.util.Locale;
@@ -14,7 +16,8 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "DAC_GYMLOG";
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
+    private GymLogRepository repository;
     String mExercise = "";
     double mWeight = 0.0;
     int mReps = 0;
@@ -25,16 +28,24 @@ public class MainActivity extends AppCompatActivity {
         binding = binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        repository = new GymLogRepository(getApplication());
+
         binding.logDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
 
         binding.logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getInformationFromDisplay();
+                insertGymLogRecord();
                 updateDisplay();
             }
         });
 
+    }
+
+    private void insertGymLogRecord(){
+        GymLog log = new GymLog(mExercise, mWeight, mReps);
+        repository.insertGymLog(log);
     }
 
     private void updateDisplay(){

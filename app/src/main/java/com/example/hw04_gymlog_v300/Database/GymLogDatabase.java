@@ -7,14 +7,17 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.hw04_gymlog_v300.Database.entities.GymLog;
+import com.example.hw04_gymlog_v300.Database.typeConverters.LocalDateTypeConverter;
 import com.example.hw04_gymlog_v300.MainActivity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@TypeConverters(LocalDateTypeConverter.class)
 @Database(entities = {GymLog.class}, version = 1, exportSchema = false)
 public abstract class GymLogDatabase extends RoomDatabase {
 
@@ -52,7 +55,7 @@ public abstract class GymLogDatabase extends RoomDatabase {
             Log.i(MainActivity.TAG, "DATABASE CREATED!");
             //TODO: Do something?
         }
-    }
+    };
 
     public abstract GymLogDAO gymLogDao();
 }
