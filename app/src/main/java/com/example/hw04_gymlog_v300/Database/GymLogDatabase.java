@@ -1,15 +1,16 @@
 package com.example.hw04_gymlog_v300.Database;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.sqlite.db.SupportSQLiteCompat;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.hw04_gymlog_v300.Database.entities.GymLog;
+import com.example.hw04_gymlog_v300.MainActivity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -21,7 +22,7 @@ public abstract class GymLogDatabase extends RoomDatabase {
     public static final String GYM_LOG_TABLE = "gymLogTable";
     private static volatile GymLogDatabase INSTANCE;
     private static int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutors = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     static GymLogDatabase getDatabase(final Context context) {
 
@@ -48,9 +49,10 @@ public abstract class GymLogDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+            Log.i(MainActivity.TAG, "DATABASE CREATED!");
             //TODO: Do something?
         }
     }
 
-
+    public abstract GymLogDAO gymLogDao();
 }
