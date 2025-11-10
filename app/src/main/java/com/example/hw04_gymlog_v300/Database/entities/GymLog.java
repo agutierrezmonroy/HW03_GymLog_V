@@ -1,10 +1,10 @@
-package com.example.hw04_gymlog_v300.Database.entities;
+package com.example.HW04_Gymlog_v300.Database.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.hw04_gymlog_v300.Database.GymLogDatabase;
+import com.example.HW04_Gymlog_v300.Database.GymLogDatabase;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package com.example.hw04_gymlog_v300;
+package com.example.HW04_Gymlog_v300;
 
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -7,12 +7,11 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.hw04_gymlog_v300.Database.GymLogRepository;
-import com.example.hw04_gymlog_v300.Database.entities.GymLog;
-import com.example.hw04_gymlog_v300.databinding.ActivityMainBinding;
+import com.example.HW04_Gymlog_v300.Database.GymLogRepository;
+import com.example.HW04_Gymlog_v300.Database.entities.GymLog;
+import com.example.HW04_Gymlog_v300.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 

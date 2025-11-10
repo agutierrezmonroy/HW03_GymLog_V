@@ -1,4 +1,4 @@
-package com.example.hw04_gymlog_v300;
+package com.example.HW04_Gymlog_v300;
 
 import android.content.Context;
 

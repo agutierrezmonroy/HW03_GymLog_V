@@ -1,9 +1,8 @@
-package com.example.hw04_gymlog_v300.Database.typeConverters;
+package com.example.HW04_Gymlog_v300.Database.typeConverters;
 
 import androidx.room.TypeConverter;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
