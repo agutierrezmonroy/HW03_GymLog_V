@@ -1,13 +1,12 @@
-package com.example.hw04_gymlog_v300.Database;
+package com.example.HW04_Gymlog_v300.Database;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.hw04_gymlog_v300.Database.entities.GymLog;
+import com.example.HW04_Gymlog_v300.Database.entities.GymLog;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Dao

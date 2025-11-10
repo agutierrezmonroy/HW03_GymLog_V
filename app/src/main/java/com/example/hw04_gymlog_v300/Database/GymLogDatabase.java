@@ -1,4 +1,4 @@
-package com.example.hw04_gymlog_v300.Database;
+package com.example.HW04_Gymlog_v300.Database;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,18 +10,20 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.hw04_gymlog_v300.Database.entities.GymLog;
-import com.example.hw04_gymlog_v300.Database.typeConverters.LocalDateTypeConverter;
-import com.example.hw04_gymlog_v300.MainActivity;
+import com.example.HW04_Gymlog_v300.Database.entities.GymLog;
+import com.example.HW04_Gymlog_v300.Database.entities.User;
+import com.example.HW04_Gymlog_v300.Database.typeConverters.LocalDateTypeConverter;
+import com.example.HW04_Gymlog_v300.MainActivity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @TypeConverters(LocalDateTypeConverter.class)
-@Database(entities = {GymLog.class}, version = 1, exportSchema = false)
+@Database(entities = {GymLog.class, User.class}, version = 1, exportSchema = false)
 public abstract class GymLogDatabase extends RoomDatabase {
 
-    private static final String DATABASE_NAME = "GymLog_databse";
+    public static final String USER_TABLE = "User_table";
+    private static final String DATABASE_NAME = "GymLog_database";
     public static final String GYM_LOG_TABLE = "gymLogTable";
     private static volatile GymLogDatabase INSTANCE;
     private static int NUMBER_OF_THREADS = 4;
@@ -53,9 +55,19 @@ public abstract class GymLogDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
             Log.i(MainActivity.TAG, "DATABASE CREATED!");
-            //TODO: Do something?
+            databaseWriteExecutor.execute(() -> {
+                UserDAO dao = INSTANCE.userDAO();
+                dao.deleteAll();
+                User admin = new User("admin1", "admin1");
+                admin.setAdmin(true);
+                dao.insert(admin);
+
+                User testUser1 = new User("testUser1", "testUser1");
+                dao.insert(testUser1);
+            });
         }
     };
 
-    public abstract GymLogDAO gymLogDao();
+    public abstract GymLogDAO gymLogDAO();
+    public abstract UserDAO userDAO();
 }

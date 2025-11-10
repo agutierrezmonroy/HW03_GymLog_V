@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.hw04_gymlog_v300"
+    namespace = "com.example.HW04_Gymlog_v300"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.hw04_gymlog_v300"
+        applicationId = "com.example.HW04_Gymlog_v300"
         minSdk = 34
         targetSdk = 35
         versionCode = 1
