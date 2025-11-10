@@ -1,5 +1,7 @@
 package com.example.HW04_Gymlog_v300;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "DAC_GYMLOG";
+    private static final String MAIN_ACTIVITY_USER_ID = "com.example.HW04_Gymlog_v300.MAIN_ACTIVITY_USER_ID";
     private ActivityMainBinding binding;
     private GymLogRepository repository;
     String mExercise = "";
@@ -31,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         loginUser();
-        if(logged)
+        if(loggedInUser == -1){
+            Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
+        }
 
         repository = GymLogRepository.getRepository(getApplication());
         binding.logDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
@@ -52,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
                 updateDisplay();
             }
         });
+    }
+
+    private void loginUser() {
+        loggedInUser = getIntent().getIntExtra("MAIN_ACTIVITY_USER_ID", -1);
+    }
+
+    static Intent mainActivityIntentFactory(Context context, int userId){
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
+        return intent;
     }
 
     private void insertGymLogRecord(){
